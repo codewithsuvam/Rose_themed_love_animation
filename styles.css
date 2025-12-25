@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom, #2b1055, #7597de);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Rose Petals */
+.petal {
+    position: absolute;
+    top: -10px;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ff9aa2, #c9184a);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(45deg);
+    opacity: 0.9;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Container */
+.container {
+    text-align: center;
+    z-index: 2;
+}
+
+/* Letter animation */
+.text span {
+    display: inline-block;
+    font-size: 4rem;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: appear 0.6s forwards;
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rose */
+.rose {
+    width: 120px;
+    height: 120px;
+    background: red;
+    border-radius: 50%;
+    margin: 30px auto;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.rose::before,
+.rose::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: darkred;
+    border-radius: 50%;
+}
+
+.rose::before {
+    top: -30px;
+    left: 0;
+}
+
+.rose::after {
+    left: 30px;
+    top: 0;
+}
+
+.rose.clicked {
+    transform: scale(1.2);
+    box-shadow: 0 0 40px rgba(255, 100, 100, 1);
+}
+
+/* Click message */
+.message {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.message.show {
+    opacity: 1;
+}
